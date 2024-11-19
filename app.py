@@ -59,6 +59,12 @@ def check():
     
     return render_template('check.html', action=action)
 
+@app.route('/display_video')
+def display_video():
+    # Assuming `video_path` is the path to the uploaded video
+    video_path = 'path/to/video.mp4'  # Adjust this based on your setup
+    return render_template('display_video.html', video_path=video_path)
+
 @app.route('/dashboard')
 def dashboard():
     if 'user_id' in session:

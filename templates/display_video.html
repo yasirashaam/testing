@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Display Video</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+  <header class="header">
+    <h1>Uploaded Video</h1>
+  </header>
+
+  <div class="video-container">
+    {% if video_path %}
+      <video controls width="80%">
+        <source src="{{ url_for('static', filename=video_path) }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    {% else %}
+      <p>No video uploaded.</p>
+    {% endif %}
+  </div>
+</body>
+</html>

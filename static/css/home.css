@@ -30,21 +30,20 @@
   .upload-section {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    max-width: 400px;
-    margin: auto;
-}
+    align-items: center;
+    gap: 15px;
+  }
   
   /* Button Styles */
   .upload-btn, .sync-btn {
-    padding: 12px 20px;
+    padding: 12px 80px;
     font-size: 1em;
-    color: #ecf0f1;
+    color: #ffffff;
     background-color: #5e0194;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.1s ease;
   }
   
   /* Hover Effect: Lightens the color on hover */
@@ -65,3 +64,30 @@
     font-style: italic;
   }
   
+  /* Top button container */
+.top-button-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Upload Setup Button Styles */
+.upload-setup-btn {
+  padding: 12px 150px;
+  font-size: 1em;
+  color: #ecf0f1;
+  background-color: #830172;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  text-decoration: none;
+}
+  
+.upload-setup-btn:hover {
+  background-color: #046640;
+}
+
+.upload-setup-btn:active {
+  background-color: #700258;
+  transform: scale(0.97);
+}
