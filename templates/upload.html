@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Upload and Sync</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+
+  
+
+    {% extends "dashboard.html" %}
+
+    {% block content %}
+      <header class="header">
+        <h1>Upload and Sync</h1>
+        <p>Upload your video and audio, and start syncing them.</p>
+      </header>
+      <!-- Button to download SyncVerse setup file, centered on the page -->
+      <form action="{{ url_for('home') }}" method="POST" id="download-form">
+        <!-- Hidden input to identify the form -->
+        <input type="hidden" name="form_id" value="download_form">
+        <div class="button-container">
+          <button type="submit" class="open-modal-btn">Click to Download SyncVerse SetUp</button>
+        </div>
+      </form>
+
+    {% if message %}
+      <div>{{ message }}</div>
+    {% endif %}
+
+        <!-- Upload Setup Button -->
+  <div class="top-button-container">
+    <button class="upload-setup-btn"> Upload Setup</button>
+  </div>
+
+    <form action="{{ url_for('sync') }}" method="POST" enctype="multipart/form-data">
+      <div class="upload-section">
+    
+      <div class="home-container">
+        <h1>Upload and Start Syncing</h1>
+    
+        <form action="{{ url_for('sync') }}" method="POST" enctype="multipart/form-data">
+          <div class="upload-section">
+            <!-- Video Upload Button -->
+            <label class="upload-btn" for="video-upload">Upload Video</label>
+            <input type="file" id="video-upload" name="video" accept="video/*" onchange="showFileName('video-upload', 'video-label')">
+            <span id="video-label" class="file-name">No video uploaded</span>
+    
+            <!-- Audio Upload Button -->
+            <label class="upload-btn" for="audio-upload">Upload Audio</label>
+            <input type="file" id="audio-upload" name="audio" accept="audio/*" onchange="showFileName('audio-upload', 'audio-label')">
+            <span id="audio-label" class="file-name">No audio uploaded</span>
+    
+            <!-- Start Syncing Button -->
+            <button type="submit" class="sync-btn"><a href="{{ url_for('display_video') }}">Start Syncking</a></button>
+          </div>
+        </form>
+      </div>
+    
+      <script>
+        // Show file name after selection
+        function showFileName(inputId, labelId) {
+          const input = document.getElementById(inputId);
+          const label = document.getElementById(labelId);
+          label.textContent = input.files.length > 0 ? input.files[0].name : 'No file uploaded';
+        }
+      </script>
+    {% endblock %}
+    
+  <div class="home-container">
+    <h1>Upload and Start Syncing</h1>
+
+    <div class="upload-section">
+      <!-- Video Upload Button -->
+      <label class="upload-btn" for="video-upload">Upload Video</label>
+      <input type="file" id="video-upload" name="video" accept="video/*" style="display: none;" onchange="showFileName('video-upload', 'video-label')">
+      <span id="video-label" class="file-name">No video uploaded</span>
+
+      <!-- Audio Upload Button -->
+      <label class="upload-btn" for="audio-upload">Upload Audio</label>
+      <input type="file" id="audio-upload" name="audio" accept="audio/*" style="display: none;" onchange="showFileName('audio-upload', 'audio-label')">
+      <span id="audio-label" class="file-name">No audio uploaded</span>
+
+      <!-- Start Syncing Button -->
+      <button class="sync-btn" onclick="startSyncing()">Start Syncing</button>
+    </div>
+  </div>
+
+  <script>
+    // Show file name after selection
+    function showFileName(inputId, labelId) {
+      const input = document.getElementById(inputId);
+      const label = document.getElementById(labelId);
+      label.textContent = input.files.length > 0 ? input.files[0].name : 'No file uploaded';
+    }
+
+    // Placeholder for sync functionality
+    function startSyncing() {
+      alert("Starting sync...");
+      // Add sync logic here
+    }
+  </script>
+</body>
+</html>
