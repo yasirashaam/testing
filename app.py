@@ -110,6 +110,7 @@ def inject_user():
         return {'user': user}
     return {'user': None}
 
+
 from flask import Flask, render_template, redirect, url_for, request, session, flash
 import os
 
